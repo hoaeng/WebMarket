@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #e37682, #5f4d93);
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px; /* Increased padding */
+    width: 450px;  /* Increased width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Takes full width of container */
+    align-items: center; /* Centers input fields */
+}
+
+label {
+    margin: 15px 0 5px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90%; /* Smaller width for input fields */
+    max-width: 280px;
+    text-align: center; /* Centers text inside the input fields */
+}
+
+input::placeholder {
+    color: #aaa; /* Light grey color for placeholder */
+}
+.form-group row{
+	display: flex;
+	width: 500px;
+	height: 100px;
+}
+button {
+    padding: 12px;
+    background-color: #fff;
+    color: #999;
+    border-color: #bbb;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 80px;
+    height: 20px;
+    line-height: 20px;
+    float:right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 280px;
+    margin-top: 30px;
+}
+
+button:hover {
+    background-color: #eee;
+}
+.JTSU{
+	color: #bbb;
+}

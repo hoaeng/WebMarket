@@ -1,71 +1,29 @@
-<%@ page contentType="text/html; charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
-<script type="text/javascript">
-	function checkForm() {
-		if (!document.newMember.id.value) {
-			alert("아이디를 입력하세요.");
-			return false;
-		}
-
-		if (!document.newMember.password.value) {
-			alert("비밀번호를 입력하세요.");
-			return false;
-		}
-
-		if (document.newMember.password.value != document.newMember.password_confirm.value) {
-			alert("비밀번호를 동일하게 입력하세요.");
-			return false;
-		}
-	}
-</script>
-<title>회원 가입</title>
+<meta charset="UTF-8">
+<title>회원가입 페이지</title>
+<link rel="stylesheet" href="../resources/css/login.css" type="text/css">
 </head>
 <body>
-	<jsp:include page="/menu.jsp" />
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">회원 가입</h1>
-		</div>
-	</div>
-
-	<div class="container">
-		<form name="newMember" class="form-horizontal"  action="processAddMember.jsp" method="post" onsubmit="return checkForm()">
-			<div class="form-group  row">
-				<label class="col-sm-2 ">아이디</label>
-				<div class="col-sm-3">
-					<input name="id" type="text" class="form-control" placeholder="id" >
-				</div>
-			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2">비밀번호</label>
-				<div class="col-sm-3">
-					<input name="password" type="text" class="form-control" placeholder="password" >
-				</div>
-			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2">비밀번호확인</label>
-				<div class="col-sm-3">
-					<input name="password_confirm" type="text" class="form-control" placeholder="password confirm" >
-				</div>
-			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2">성명</label>
-				<div class="col-sm-3">
-					<input name="name" type="text" class="form-control" placeholder="name" >
-				</div>
-			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2">성별</label>
-				<div class="col-sm-10">
-					<input name="gender" type="radio" value="남" /> 남 
-					<input name="gender" type="radio" value="여" /> 여
-				</div>
-			</div>
+    <div class="container">
+        <div class="header">
+            로고부분
+            <h1>시작</h1>
+        </div>
+        <form class="login-box" action="processAddMember.jsp">
+   			<input type="text" id="username" name="username" placeholder="사용자 이름">
+    
+			<input type="password" id="password" name="password" placeholder="비밀번호">
+			
+			<input type="password" id="password_confirm" name="password_confirm" placeholder="비밀번호 확인">
+			
+			<input type="text" id="name" name="name" placeholder="성명">
+			
 			<div class="form-group row">
-				<label class="col-sm-2">생일</label>
+				<label class="col-sm-2"></label>
 				<div class="col-sm-4  ">
 					<input type="text" name="birthyy" maxlength="4" placeholder="년(4자)" size="6"> 
 					<select name="birthmm">
@@ -85,8 +43,8 @@
 					</select> <input type="text" name="birthdd" maxlength="2" placeholder="일" size="4">
 				</div>
 			</div>
-			<div class="form-group  row ">
-				<label class="col-sm-2">이메일</label>
+			
+			<label class="col-sm-2">이메일</label>
 				<div class="col-sm-10">
 					<input type="text" name="mail1" maxlength="50">@ 
 					<select name="mail2">
@@ -95,29 +53,12 @@
 						<option>gmail.com</option>
 						<option>nate.com</option>
 					</select>
-				</div>				
-			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2">전화번호</label>
-				<div class="col-sm-3">
-					<input name="phone" type="text" class="form-control" placeholder="phone" >
-
-				</div>
-			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2 ">주소</label>
-				<div class="col-sm-5">
-					<input name="address" type="text" class="form-control" placeholder="address">
-
-				</div>
-			</div>
-			<div class="form-group  row">
-				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="submit" class="btn btn-primary " value="등록 " > 
-					<input type="reset" class="btn btn-primary " value="취소 " onclick="reset()" >
-				</div>
-			</div>
+				</div>	
+    
+    		<button type="submit">가입</button>
 		</form>
-	</div>
+		<br><span class = "JTSU">이미 계정이 있으신가요? <a href="../login.jsp">로그인</a>하기</span>
+
+    </div>
 </body>
 </html>
