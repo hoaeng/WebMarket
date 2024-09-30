@@ -1,11 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript">
+	function checkForm() {
+		if (!document.newMember.id.value) {
+			alert("아이디를 입력하세요.");
+			return false;
+		}
+
+		if (!document.newMember.password.value) {
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+
+		if (document.newMember.password.value != document.newMember.password_confirm.value) {
+			alert("비밀번호를 동일하게 입력하세요.");
+			return false;
+		}
+	}
+</script>
 <title>회원가입 페이지</title>
-<link rel="stylesheet" href="../resources/css/login.css" type="text/css">
+<link rel="stylesheet" href="../resources/css/login.css?after" type="text/css">
 </head>
 <body>
     <div class="container">
@@ -26,8 +45,8 @@
 				<label class="col-sm-2"></label>
 				<div class="col-sm-4  ">
 					<input type="text" name="birthyy" maxlength="4" placeholder="년(4자)" size="6"> 
-					<select name="birthmm">
-						<option value="">월</option>
+					<select name="birthmm" class="select">
+						<option disabled selected>월</option>
 						<option value="01">1</option>
 						<option value="02">2</option>
 						<option value="03">3</option>
@@ -55,7 +74,7 @@
 					</select>
 				</div>	
     
-    		<button type="submit">가입</button>
+    		<button type="submit" class="btn btn-primary " value="등록 " >가입</button>
 		</form>
 		<br><span class = "JTSU">이미 계정이 있으신가요? <a href="../login.jsp">로그인</a>하기</span>
 

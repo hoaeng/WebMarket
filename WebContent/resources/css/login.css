@@ -91,3 +91,34 @@ button:hover {
 .JTSU{
 	color: #bbb;
 }
+
+
+select::-ms-expand { 
+	display: none;
+}
+.select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-bottom: 20px;
+  appearance: none;
+  width: 300px;
+  height: 90%;
+  background: url('https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png') calc(100% - 5px) center no-repeat;
+  background-size: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: 0 none;
+  text-align-last: center;
+  text-align: center;
+  -ms-text-align-last: center;
+  -moz-text-align-last: center;
+}
+.select option {
+  padding: 3px 0;
+}
+
+.errormessage {
+	color: crimson;
+}
