@@ -29,7 +29,7 @@
     
     		<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인</button>
 		</form>
-		<br><span class = "JTSU">계정이 없으신가요? <a href="./member/addMember.jsp">가입</a>하기</span>
+		<br><span class = "JTSU">계정이 없으신가요? <a href="./addMember.jsp">가입</a>하기</span>
 
     </div>
 </body>

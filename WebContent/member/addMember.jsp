@@ -76,7 +76,7 @@
     
     		<button type="submit" class="btn btn-primary " value="등록 " >가입</button>
 		</form>
-		<br><span class = "JTSU">이미 계정이 있으신가요? <a href="../login.jsp">로그인</a>하기</span>
+		<br><span class = "JTSU">이미 계정이 있으신가요? <a href="./loginMember.jsp">로그인</a>하기</span>
 
     </div>
 </body>

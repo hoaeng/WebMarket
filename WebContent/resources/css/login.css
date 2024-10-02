@@ -10,7 +10,20 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.container {
+
+.rmcenterd{
+    text-align: center;
+    border-radius: 10px;
+    padding: 40px; /* Increased padding */
+    width: 450px;  /* Increased width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container{
     text-align: center;
     background-color: white;
     border-radius: 10px;
@@ -22,6 +35,9 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+
+
 
 .header {
     margin-bottom: 20px;
@@ -83,6 +99,12 @@ button {
     justify-content: center;
     max-width: 280px;
     margin-top: 30px;
+    text-align: center
+}
+
+.rsm{
+	padding: 22px;
+	width: 160px;
 }
 
 button:hover {
