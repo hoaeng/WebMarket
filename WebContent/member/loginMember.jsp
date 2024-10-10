@@ -14,7 +14,7 @@
             <h1>시작</h1>
         </div>
         <form class="login-box" action="processLoginMember.jsp" method="post">
-   			<input type="text" id="username" name="username" placeholder="사용자 이름" required>
+   			<input type="text" id="id" name="id" placeholder="아이디" required>
     
 			<input type="password" id="password" name="password" placeholder="비밀번호" required>
 			

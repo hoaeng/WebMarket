@@ -1,13 +1,18 @@
-<!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String sessionId = (String) session.getAttribute("sessionId");
+%>
 <html>
 <head>
-<title>INSPRE</title>
+<title>INSPIRE</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
@@ -20,21 +25,34 @@
 		<!-- Header -->
 		<header id="header" class="alt">
 			<span class="logo"><img src="images/logo.svg" alt="" /></span>
-			<h1>INSPRE</h1>
-			<p>
-				당신의 아이디어 지금 공유하세요<br /> 계정이 없나요? 지금 <a
-					href="./member/loginMember.jsp">로그인</a> 하기
-			</p>
+			<h1>INSPIRE</h1>
+			<c:choose>
+				<c:when test="${empty sessionId}">
+					<p>
+						당신의 아이디어, 지금 공유하세요<br /> 계정이 없나요? 지금 <a
+							href="./member/loginMember.jsp">로그인</a> 하기
+					</p>
+				</c:when>
+				<c:otherwise>
+					<p>당신의 아이디어, 지금 공유하세요!</p>
+				</c:otherwise>
+			</c:choose>
 		</header>
 
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
-				<li><a href="#intro" class="active">소개</a></li>
-				<li><a href="#first">랭킹</a></li>
+				<c:choose>
+					<c:when test="${empty sessionId}">
+						<li><a href="#intro" class="active">소개</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="#intro" class="active">프로필</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><a href="#first">아이디어 목록</a></li>
 				<li><a href="#second">커뮤니티</a></li>
 				<li><a href="#cta">프리미엄</a></li>
-				<li><a href="./login.jsp">login</a></li>
 			</ul>
 		</nav>
 
@@ -44,55 +62,61 @@
 			<!-- Introduction -->
 			<section id="intro" class="main">
 				<div class="spotlight">
-					<div class="content">
-						<header class="major">
-							<h2>INSPIRE</h2>
-						</header>
-						<p>저희 사이트는 아이디어를 공유할 수 있는 사이트입니다.</p>
-						<ul class="actions">
-							<li><a href="generic.html" class="button">Learn More</a></li>
-						</ul>
-					</div>
-					<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+					<c:choose>
+						<c:when test="${empty sessionId}">
+							<div class="content">
+								<header class="major">
+									<h2>INSPIRE</h2>
+								</header>
+								<p>저희 사이트는 아이디어를 공유할 수 있는 사이트입니다.</p>
+								<ul class="actions">
+									<li><a href="./member/loginmember.jsp" class="button">시작하기</a></li>
+								</ul>
+							</div>
+							<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+						</c:when>
+						<c:otherwise>
+							<div class="content">
+								<header class="major">
+									<h2><%=sessionId%></h2>
+								</header>
+								<p>프로필 편집하러 가기</p>
+								<ul class="actions">
+									<li><a href="./member/loginmember.jsp" class="button">프로필 관리</a></li>
+								</ul>
+							</div>
+							<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</section>
 
 			<!-- First Section -->
 			<section id="first" class="main special">
 				<header class="major">
-					<h2>랭킹</h2>
+					<h2>아이디어 목록</h2>
 				</header>
-				<div>
-					<table class="table">
-						<tr>
-							<td colspan="2"><h2>게시판</h2></td>
-						</tr>
-						<tr class="header">
-							<td class="num">번호</td>
-							<td class="title">제목</td>
-							<td>작성자</td>
-							<td>작성날짜</td>
-						</tr>
-						<script>
-							var i, day = 20;
-							for (i = 10; i > 0; i--) {
-								document.write("<tr class='body'>");
-								document.write("<td>" + i + "</td>");
-								document.write("<td class='title'>제목입니다.</td>");
-								document.write("<td>작성자</td>");
-								document.write("<td>24-01-" + day-- + "</td>");
-								document.write("</tr>");
-							}
-						</script>
-					</table>
-				</div>
+				<ul class="features">
+					<li><span class="material-symbols-outlined"
+						style="font-size: 150px;">military_tech</span>
+						<h3>랭킹</h3>
+						<p>주간, 월간 등 기간 인기 아이디어 목록을 확인할 수 있습니다</p> <a href="generic.html"
+						class="button">랭킹</a></li>
+					<li><span class="material-symbols-outlined"
+						style="font-size: 150px;">lightbulb_circle</span>
+						<h3>아이디어</h3>
+						<p>아이디어 개시판으로 이동합니다.</p> <a href="generic.html" class="button">아이디어</a></li>
+					<li><span class="material-symbols-outlined"
+						style="font-size: 150px;">forum</span>
+						<h3>커뮤니티</h3>
+						<p>커뮤니티로 이동합니다.</p> <a href="generic.html" class="button">커뮤니티</a></li>
+				</ul>
 				<footer class="major">
 					<ul class="actions special">
 						<li><a href="generic.html" class="button">Learn More</a></li>
 					</ul>
 				</footer>
 			</section>
-
 			<!-- Second Section -->
 			<section id="second" class="main special">
 				<header class="major">
@@ -148,7 +172,6 @@
 					</ul>
 				</footer>
 			</section>
-
 		</div>
 
 		<!-- Footer -->
@@ -189,7 +212,7 @@
 				</ul>
 			</section>
 			<p class="copyright">
-				&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
+				&copy; INSPIRE</a>
 			</p>
 		</footer>
 

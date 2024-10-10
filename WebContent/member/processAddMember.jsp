@@ -5,9 +5,9 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String username = request.getParameter("username");
-	String password = request.getParameter("password");
+	String id = request.getParameter("id");
 	String name = request.getParameter("name");
+	String password = request.getParameter("password");
 	String year = request.getParameter("birthyy");
 	String month = request.getParameterValues("birthmm")[0];
 	String day = request.getParameter("birthdd");
@@ -27,9 +27,9 @@
 
 <sql:update dataSource="${dataSource}" var="resultSet">
    INSERT INTO member VALUES (?, ?, ?, ?, ?, ?)
-   <sql:param value="<%=username%>" />
-	<sql:param value="<%=password%>" />
+   <sql:param value="<%=id%>" />
 	<sql:param value="<%=name%>" />
+	<sql:param value="<%=password%>" />
 	<sql:param value="<%=birth%>" />
 	<sql:param value="<%=mail%>" />
 	<sql:param value="<%=timestamp%>" />

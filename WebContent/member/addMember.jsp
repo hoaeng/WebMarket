@@ -33,13 +33,13 @@
             <h1>시작</h1>
         </div>
         <form class="login-box" action="processAddMember.jsp">
-   			<input type="text" id="username" name="username" placeholder="사용자 이름">
+   			<input type="text" id="id" name="id" placeholder="아이디">
+			
+			<input type="text" id="name" name="name" placeholder="닉네임 (주로 표시됩니다.)">
     
 			<input type="password" id="password" name="password" placeholder="비밀번호">
 			
 			<input type="password" id="password_confirm" name="password_confirm" placeholder="비밀번호 확인">
-			
-			<input type="text" id="name" name="name" placeholder="성명">
 			
 			<div class="form-group row">
 				<label class="col-sm-2"></label>
