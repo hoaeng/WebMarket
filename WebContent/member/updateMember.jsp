@@ -8,7 +8,7 @@
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
 <sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost:3306/WebMarketDB?serverTimezone=UTC"
+	url="jdbc:mysql://localhost:3306/inspiredb?serverTimezone=UTC"
 	driver="com.mysql.cj.jdbc.Driver" user="root" password="1234" />
 
 <sql:query dataSource="${dataSource}" var="resultSet">
@@ -62,14 +62,6 @@
 					<input name="name" type="text" class="form-control" placeholder="name" value="<c:out value='${row.name }'/>" >
 				</div>
 			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2">성별</label>
-				<div class="col-sm-10">
-					<c:set var="gender" value="${row.gender }" />
-					<input name="gender" type="radio" value="남"	<c:if test="${gender.equals('남')}"> <c:out value="checked" /> </c:if> >남 
-					<input name="gender" type="radio" value="여"	<c:if test="${gender.equals('여')}"> <c:out value="checked" /> </c:if> >여
-				</div>
-			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">생일</label>
 				<div class="col-sm-4  ">
@@ -101,19 +93,6 @@
 						<option>gmail.com</option>
 						<option>nate.com</option>
 					</select>
-				</div>
-			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2">전화번호</label>
-				<div class="col-sm-3">
-					<input name="phone" type="text" class="form-control" placeholder="phone" value="<c:out value='${row.phone}'/>">
-				</div>
-			</div>
-
-			<div class="form-group  row">
-				<label class="col-sm-2 ">주소</label>
-				<div class="col-sm-5">
-					<input name="address" type="text" class="form-control" placeholder="address" value="<c:out value='${row.address}'/>">
 				</div>
 			</div>
 			<div class="form-group  row">

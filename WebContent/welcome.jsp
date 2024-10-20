@@ -5,10 +5,11 @@
 String sessionId = (String) session.getAttribute("sessionId");
 %>
 <html>
+<html lang="ko">
 <head>
 <title>INSPIRE</title>
 <meta charset="utf-8" />
-<meta name="viewport"
+<meta name="vie	wport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet"
@@ -53,6 +54,14 @@ String sessionId = (String) session.getAttribute("sessionId");
 				<li><a href="#first">아이디어 목록</a></li>
 				<li><a href="#second">커뮤니티</a></li>
 				<li><a href="#cta">프리미엄</a></li>
+				
+				<c:choose>
+					<c:when test="${empty sessionId}">
+					</c:when>
+					<c:otherwise>
+						<li><a href="./member/logoutMember.jsp">로그아웃</a></li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</nav>
 
@@ -70,7 +79,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 								</header>
 								<p>저희 사이트는 아이디어를 공유할 수 있는 사이트입니다.</p>
 								<ul class="actions">
-									<li><a href="./member/loginmember.jsp" class="button">시작하기</a></li>
+									<li><a href="./member/loginMember.jsp" class="button">시작하기</a></li>
 								</ul>
 							</div>
 							<span class="image"><img src="images/pic01.jpg" alt="" /></span>
@@ -82,7 +91,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 								</header>
 								<p>프로필 편집하러 가기</p>
 								<ul class="actions">
-									<li><a href="./member/loginmember.jsp" class="button">프로필 관리</a></li>
+									<li><a href="./member/updateMember.jsp" class="button">프로필 관리</a></li>
 								</ul>
 							</div>
 							<span class="image"><img src="images/pic01.jpg" alt="" /></span>
@@ -98,18 +107,18 @@ String sessionId = (String) session.getAttribute("sessionId");
 				</header>
 				<ul class="features">
 					<li><span class="material-symbols-outlined"
-						style="font-size: 150px;">military_tech</span>
+						style="font-size: 150px;">social_leaderboard</span>
 						<h3>랭킹</h3>
 						<p>주간, 월간 등 기간 인기 아이디어 목록을 확인할 수 있습니다</p> <a href="generic.html"
 						class="button">랭킹</a></li>
 					<li><span class="material-symbols-outlined"
 						style="font-size: 150px;">lightbulb_circle</span>
 						<h3>아이디어</h3>
-						<p>아이디어 개시판으로 이동합니다.</p> <a href="generic.html" class="button">아이디어</a></li>
+						<p>아이디어 개시판으로 이동합니다.</p><br> <a href="generic.html" class="button">아이디어</a></li>
 					<li><span class="material-symbols-outlined"
 						style="font-size: 150px;">forum</span>
 						<h3>커뮤니티</h3>
-						<p>커뮤니티로 이동합니다.</p> <a href="generic.html" class="button">커뮤니티</a></li>
+						<p>커뮤니티로 이동합니다.</p><br> <a href="generic.html" class="button">커뮤니티</a></li>
 				</ul>
 				<footer class="major">
 					<ul class="actions special">
@@ -119,49 +128,39 @@ String sessionId = (String) session.getAttribute("sessionId");
 			</section>
 			<!-- Second Section -->
 			<section id="second" class="main special">
-				<header class="major">
-					<h2>커뮤니티</h2>
-					<p>
-						Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-						posuere. Nulla massa urna, fermentum eget quam aliquet.
-					</p>
-				</header>
-				<ul class="statistics">
-					<li class="style1"><span class="icon solid fa-code-branch"></span>
-						<strong>5,120</strong> Etiam</li>
-					<li class="style2"><span class="icon fa-folder-open"></span> <strong>8,192</strong>
-						Magna</li>
-					<li class="style3"><span class="icon solid fa-signal"></span>
-						<strong>2,048</strong> Tempus</li>
-					<li class="style4"><span class="icon solid fa-laptop"></span>
-						<strong>4,096</strong> Aliquam</li>
-					<li class="style5"><span class="icon fa-gem"></span> <strong>1,024</strong>
-						Nullam</li>
-				</ul>
-				<p class="content">Nam elementum nisl et mi a commodo porttitor.
-					Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a
-					orci mi, elementum ac arcu sit amet, fermentum pellentesque et
-					purus. Integer maximus varius lorem, sed convallis diam accumsan
-					sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar
-					faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur
-					vestibulum. Integer eget purus nec nulla mattis et accumsan ut
-					magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus
-					et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam
-					porta. Cras eu ornare dui curabitur lacinia.</p>
-				<footer class="major">
-					<ul class="actions special">
-						<li><a href="generic.html" class="button">Learn More</a></li>
-					</ul>
-				</footer>
-			</section>
+            <header class="major">
+               <h2>MY 아이디어</h2>
+               <p>
+                  자신만의 아이디어를 만들고 수정해 보세요.<br>
+                  많은 사람들에게 자신의 아이디어를 공유해 보세요.
+               </p>
+            </header>
+            <ul class="statistics">
+               <li class="style1"><span class="icon solid fa-code-branch"></span>
+                  <strong>5,120</strong> Etiam</li>
+               <li class="style2"><span class="icon fa-folder-open"></span> <strong>8,192</strong>
+                  Magna</li>
+               <li class="style3"><span class="icon solid fa-signal"></span>
+                  <strong>2,048</strong> Tempus</li>
+               <li class="style4"><span class="icon solid fa-laptop"></span>
+                  <strong>4,096</strong> Aliquam</li>
+               <li class="style5"><span class="icon fa-gem"></span> <strong>1,024</strong>
+                  Nullam</li>
+            </ul>
+            <footer class="major">
+               <ul class="actions special">
+                  <li><a href="generic.html" class="button">Learn More</a></li>
+               </ul>
+            </footer>
+         </section>
 
 			<!-- Get Started -->
 			<section id="cta" class="main special">
 				<header class="major">
 					<h2>프리미엄</h2>
 					<p>
-						Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-						posuere. Nulla massa urna, fermentum eget quam aliquet.
+						프리미엄을 통해 유료 아이디어를 게시해 수익을 창출하고, 모든 아이디어를 마음껏 확인하세요!<br />
+                  모든 유료 프로그램과 회원 혜택을 통해 더 질 좋은 아이디어들의 주인이 되어보세요!
 					</p>
 				</header>
 				<footer class="major">

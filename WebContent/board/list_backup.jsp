@@ -24,16 +24,15 @@
 	}
 </script>
 </head>
-<body style="background-image: linear-gradient(to right, #e37682, #5f4d93);">
+<body>
 	<jsp:include page="../menu.jsp" />
-	<div class="jumbotron" style="background-color: white; width: 1140px; height: 60px; margin-left: 186px; margin-bottom: 0; border-radius: 4px; margin-top: 15px; padding: 0px">
+	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3" style="color: #000; font-weight: bolder; font-size: 30px; line-height: 60px">아이디어 게시판</h1>
+			<h1 class="display-3">게시판</h1>
 		</div>
 	</div>
-	<div class="container" style="background-color: white; margin-top: 0; height: 100%; border-radius: 4px;">
+	<div class="container">
 		<form action="<c:url value="./BoardListAction.do"/>" method="post">
-		<hr style="border: ">
 			<div>
 				<div class="text-right">
 					<span class="badge badge-success">전체 <%=total_record%>건	</span>
@@ -64,7 +63,7 @@
 					%>
 				</table>
 			</div>
-			<div align="center" style="position: relative; top: 450px">
+			<div align="center">
 				<c:set var="pageNum" value="<%=pageNum%>" />
 				<c:forEach var="i" begin="1" end="<%=total_page%>">
 					<a href="<c:url value="./BoardListAction.do?pageNum=${i}" /> ">
@@ -80,7 +79,7 @@
 					</a>
 				</c:forEach>
 			</div>
-			<div align="left" style="position: relative; top: 450px">
+			<div align="left">
 				<table>
 					<tr>
 						<td width="100%" align="left">&nbsp;&nbsp; 
@@ -97,7 +96,7 @@
 				</table>
 			</div>
 		</form>
-		<hr style="position: relative; top: 450px">
+		<hr>
 	</div>
 	<jsp:include page="../footer.jsp" />
 </body>

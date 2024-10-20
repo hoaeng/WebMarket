@@ -4,7 +4,7 @@
 	Connection conn = null;	
 
 	try {
-		String url = "jdbc:mysql://localhost:3306/WebMarketDB?serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3306/inspiredb?serverTimezone=UTC";
 		String user = "root";
 		String password = "1234";
 

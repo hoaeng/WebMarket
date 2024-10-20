@@ -25,7 +25,7 @@
 %>
 
 <sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost:3306/WebMarketDB?serverTimezone=UTC"
+	url="jdbc:mysql://localhost:3306/inspiredb?serverTimezone=UTC"
 	driver="com.mysql.cj.jdbc.Driver" user="root" password="1234" />
 
 <sql:update dataSource="${dataSource}" var="resultSet">
