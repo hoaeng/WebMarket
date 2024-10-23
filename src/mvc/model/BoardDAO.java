@@ -20,7 +20,7 @@ public class BoardDAO {
 			instance = new BoardDAO();
 		return instance;
 	}	
-	//board 테이블의 레코드 개수
+	//board �뀒�씠釉붿쓽 �젅肄붾뱶 媛쒖닔
 	public int getListCount(String items, String text) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -44,7 +44,7 @@ public class BoardDAO {
 				x = rs.getInt(1);
 			
 		} catch (Exception ex) {
-			System.out.println("getListCount() 에러: " + ex);
+			System.out.println("getListCount() �뿉�윭: " + ex);
 		} finally {			
 			try {				
 				if (rs != null) 
@@ -59,8 +59,8 @@ public class BoardDAO {
 		}		
 		return x;
 	}
-	//board 테이블의 레코드 가져오기
-	public ArrayList<BoardDTO> getBoardList(int page, int limit, String items, String text) {
+	//board �뀒�씠釉붿쓽 �젅肄붾뱶 媛��졇�삤湲�
+	public ArrayList<BoardDTO> getBoardList(int page, int limit, String items, String text, int board_type) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -93,6 +93,7 @@ public class BoardDAO {
 				board.setRegist_day(rs.getString("regist_day"));
 				board.setHit(rs.getInt("hit"));
 				board.setIp(rs.getString("ip"));
+				board.setType(rs.getInt("board_type"));
 				list.add(board);
 
 				if (index < (start + limit) && index <= total_record)
@@ -102,7 +103,7 @@ public class BoardDAO {
 			}
 			return list;
 		} catch (Exception ex) {
-			System.out.println("getBoardList() 에러 : " + ex);
+			System.out.println("getBoardList() �뿉�윭 : " + ex);
 		} finally {
 			try {
 				if (rs != null) 
@@ -117,7 +118,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	//member 테이블에서 인증된 id의 사용자명 가져오기
+	//member �뀒�씠釉붿뿉�꽌 �씤利앸맂 id�쓽 �궗�슜�옄紐� 媛��졇�삤湲�
 	public String getLoginNameById(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -137,7 +138,7 @@ public class BoardDAO {
 			
 			return name;
 		} catch (Exception ex) {
-			System.out.println("getBoardByNum() 에러 : " + ex);
+			System.out.println("getBoardByNum() �뿉�윭 : " + ex);
 		} finally {
 			try {				
 				if (rs != null) 
@@ -153,7 +154,7 @@ public class BoardDAO {
 		return null;
 	}
 
-	//board 테이블에 새로운 글 삽입히가
+	//board �뀒�씠釉붿뿉 �깉濡쒖슫 湲� �궫�엯�엳媛�
 	public void insertBoard(BoardDTO board)  {
 
 		
@@ -163,7 +164,7 @@ public class BoardDAO {
 		try {
 			conn = DBConnection.getConnection();		
 
-			String sql = "insert into board values(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into board values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, board.getNum());
@@ -174,10 +175,11 @@ public class BoardDAO {
 			pstmt.setString(6, board.getRegist_day());
 			pstmt.setInt(7, board.getHit());
 			pstmt.setString(8, board.getIp());
+			pstmt.setInt(9, board.getType());
 
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
-			System.out.println("insertBoard() 에러 : " + ex);
+			System.out.println("insertBoard() �뿉�윭 : " + ex);
 		} finally {
 			try {									
 				if (pstmt != null) 
@@ -189,7 +191,7 @@ public class BoardDAO {
 			}		
 		}		
 	} 
-	//선택된 글의 조회수 증가하기
+	//�꽑�깮�맂 湲��쓽 議고쉶�닔 利앷��븯湲�
 	public void updateHit(int num) {
 
 		Connection conn = null;
@@ -215,7 +217,7 @@ public class BoardDAO {
 			pstmt.setInt(2, num);
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
-			System.out.println("updateHit() 에러 : " + ex);
+			System.out.println("updateHit() �뿉�윭 : " + ex);
 		} finally {
 			try {
 				if (rs != null) 
@@ -229,7 +231,7 @@ public class BoardDAO {
 			}			
 		}
 	}
-	//선택된 글 상세 내용 가져오기
+	//�꽑�깮�맂 湲� �긽�꽭 �궡�슜 媛��졇�삤湲�
 	public BoardDTO getBoardByNum(int num, int page) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -255,11 +257,12 @@ public class BoardDAO {
 				board.setRegist_day(rs.getString("regist_day"));
 				board.setHit(rs.getInt("hit"));
 				board.setIp(rs.getString("ip"));
+				board.setType(rs.getInt("board_type"));
 			}
 			
 			return board;
 		} catch (Exception ex) {
-			System.out.println("getBoardByNum() 에러 : " + ex);
+			System.out.println("getBoardByNum() �뿉�윭 : " + ex);
 		} finally {
 			try {
 				if (rs != null) 
@@ -274,7 +277,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	//선택된 글 내용 수정하기
+	//�꽑�깮�맂 湲� �궡�슜 �닔�젙�븯湲�
 	public void updateBoard(BoardDTO board) {
 
 		Connection conn = null;
@@ -297,7 +300,7 @@ public class BoardDAO {
 			conn.commit();
 
 		} catch (Exception ex) {
-			System.out.println("updateBoard() 에러 : " + ex);
+			System.out.println("updateBoard() �뿉�윭 : " + ex);
 		} finally {
 			try {										
 				if (pstmt != null) 
@@ -309,7 +312,7 @@ public class BoardDAO {
 			}		
 		}
 	} 
-	//선택된 글 삭제하기
+	//�꽑�깮�맂 湲� �궘�젣�븯湲�
 	public void deleteBoard(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;		
@@ -323,7 +326,7 @@ public class BoardDAO {
 			pstmt.executeUpdate();
 
 		} catch (Exception ex) {
-			System.out.println("deleteBoard() 에러 : " + ex);
+			System.out.println("deleteBoard() �뿉�윭 : " + ex);
 		} finally {
 			try {										
 				if (pstmt != null) 

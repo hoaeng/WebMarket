@@ -9,6 +9,7 @@ public class BoardDTO {
 	private String regist_day;
 	private int hit;
 	private String ip;
+	private int board_type;
 
 	public BoardDTO() {
 		super();		
@@ -78,4 +79,11 @@ public class BoardDTO {
 		this.ip = ip;
 	}
 
+	public int getType() {
+		return board_type;
+	}
+	
+	public void setType(int board_type) {
+		this.board_type = board_type;
+	}
 }

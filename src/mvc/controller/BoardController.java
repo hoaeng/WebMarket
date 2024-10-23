@@ -30,36 +30,36 @@ public class BoardController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 	
-		if (command.equals("/BoardListAction.do")) {//등록된 글 목록 페이지 출력하기
+		if (command.equals("/BoardListAction.do")) {//�벑濡앸맂 湲� 紐⑸줉 �럹�씠吏� 異쒕젰�븯湲�
 			requestBoardList(request);
 			RequestDispatcher rd = request.getRequestDispatcher("./board/list.jsp");
 			rd.forward(request, response);
-		} else if (command.equals("/BoardWriteForm.do")) { // 글 등록 페이지 출력하기
+		} else if (command.equals("/BoardWriteForm.do")) { // 湲� �벑濡� �럹�씠吏� 異쒕젰�븯湲�
 				requestLoginName(request);
 				RequestDispatcher rd = request.getRequestDispatcher("./board/writeForm.jsp");
 				rd.forward(request, response);				
-		} else if (command.equals("/BoardWriteAction.do")) {// 새로운 글 등록하기
+		} else if (command.equals("/BoardWriteAction.do")) {// �깉濡쒖슫 湲� �벑濡앺븯湲�
 				requestBoardWrite(request);
 				RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
 				rd.forward(request, response);						
-		} else if (command.equals("/BoardViewAction.do")) {//선택된 글 상세 페이지 가져오기
+		} else if (command.equals("/BoardViewAction.do")) {//�꽑�깮�맂 湲� �긽�꽭 �럹�씠吏� 媛��졇�삤湲�
 				requestBoardView(request);
 				RequestDispatcher rd = request.getRequestDispatcher("/BoardView.do");
 				rd.forward(request, response);						
-		} else if (command.equals("/BoardView.do")) { //글 상세 페이지 출력하기
+		} else if (command.equals("/BoardView.do")) { //湲� �긽�꽭 �럹�씠吏� 異쒕젰�븯湲�
 				RequestDispatcher rd = request.getRequestDispatcher("./board/view.jsp");
 				rd.forward(request, response);	
-		} else if (command.equals("/BoardUpdateAction.do")) { //선택된 글의 조회수 증가하기
+		} else if (command.equals("/BoardUpdateAction.do")) { //�꽑�깮�맂 湲��쓽 議고쉶�닔 利앷��븯湲�
 				requestBoardUpdate(request);
 				RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
 				rd.forward(request, response);
-		}else if (command.equals("/BoardDeleteAction.do")) { //선택된 글 삭제하기
+		}else if (command.equals("/BoardDeleteAction.do")) { //�꽑�깮�맂 湲� �궘�젣�븯湲�
 				requestBoardDelete(request);
 				RequestDispatcher rd = request.getRequestDispatcher("/BoardListAction.do");
 				rd.forward(request, response);				
 		} 
 	}
-	//등록된 글 목록 가져오기	
+	//�벑濡앸맂 湲� 紐⑸줉 媛��졇�삤湲�	
 	public void requestBoardList(HttpServletRequest request){
 			
 		BoardDAO dao = BoardDAO.getInstance();
@@ -67,6 +67,7 @@ public class BoardController extends HttpServlet {
 		
 	  	int pageNum=1;
 		int limit=LISTCOUNT;
+		int board_Type = Integer.parseInt(request.getParameter("board_type"));
 		
 		if(request.getParameter("pageNum")!=null)
 			pageNum=Integer.parseInt(request.getParameter("pageNum"));
@@ -75,7 +76,7 @@ public class BoardController extends HttpServlet {
 		String text = request.getParameter("text");
 		
 		int total_record=dao.getListCount(items, text);
-		boardlist = dao.getBoardList(pageNum,limit, items, text); 
+		boardlist = dao.getBoardList(pageNum, limit, items, text, board_Type); 
 		
 		int total_page;
 		
@@ -92,9 +93,10 @@ public class BoardController extends HttpServlet {
    		request.setAttribute("pageNum", pageNum);		  
    		request.setAttribute("total_page", total_page);   
 		request.setAttribute("total_record",total_record); 
-		request.setAttribute("boardlist", boardlist);								
+		request.setAttribute("boardlist", boardlist);		
+		request.setAttribute("board_Type", board_Type);
 	}
-	//인증된 사용자명 가져오기
+	//�씤利앸맂 �궗�슜�옄紐� 媛��졇�삤湲�
 	public void requestLoginName(HttpServletRequest request){
 					
 		String id = request.getParameter("id");
@@ -105,7 +107,7 @@ public class BoardController extends HttpServlet {
 		
 		request.setAttribute("name", name);									
 	}
-	// 새로운 글 등록하기
+	// �깉濡쒖슫 湲� �벑濡앺븯湲�
 	public void requestBoardWrite(HttpServletRequest request){
 					
 		BoardDAO dao = BoardDAO.getInstance();		
@@ -128,7 +130,7 @@ public class BoardController extends HttpServlet {
 		
 		dao.insertBoard(board);								
 	}
-	//선택된 글 상세 페이지 가져오기
+	//�꽑�깮�맂 湲� �긽�꽭 �럹�씠吏� 媛��졇�삤湲�
 	public void requestBoardView(HttpServletRequest request){
 					
 		BoardDAO dao = BoardDAO.getInstance();
@@ -142,7 +144,7 @@ public class BoardController extends HttpServlet {
    		request.setAttribute("page", pageNum); 
    		request.setAttribute("board", board);   									
 	}
-	//선택된 글 내용 수정하기
+	//�꽑�깮�맂 湲� �궡�슜 �닔�젙�븯湲�
 	public void requestBoardUpdate(HttpServletRequest request){
 					
 		int num = Integer.parseInt(request.getParameter("num"));
@@ -165,7 +167,7 @@ public class BoardController extends HttpServlet {
 		
 		 dao.updateBoard(board);								
 	}
-	//선택된 글 삭제하기
+	//�꽑�깮�맂 湲� �궘�젣�븯湲�
 	public void requestBoardDelete(HttpServletRequest request){
 					
 		int num = Integer.parseInt(request.getParameter("num"));

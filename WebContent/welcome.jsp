@@ -114,11 +114,11 @@ String sessionId = (String) session.getAttribute("sessionId");
 					<li><span class="material-symbols-outlined"
 						style="font-size: 150px;">lightbulb_circle</span>
 						<h3>아이디어</h3>
-						<p>아이디어 개시판으로 이동합니다.</p><br> <a href="generic.html" class="button">아이디어</a></li>
+						<p>아이디어 게시판으로 이동합니다.</p><br> <a href="./BoardListAction.do?pageNum=1&board_type=1" class="button">아이디어</a></li>
 					<li><span class="material-symbols-outlined"
 						style="font-size: 150px;">forum</span>
 						<h3>커뮤니티</h3>
-						<p>커뮤니티로 이동합니다.</p><br> <a href="generic.html" class="button">커뮤니티</a></li>
+						<p>커뮤니티로 이동합니다.</p><br> <a href="./BoardListAction.do?pageNum=1&board_type=0" class="button">커뮤니티</a></li>
 				</ul>
 				<footer class="major">
 					<ul class="actions special">

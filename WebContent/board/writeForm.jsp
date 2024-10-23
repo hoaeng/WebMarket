@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	String name = (String) request.getAttribute("name");
-	
+String name = (String) request.getAttribute("name");
 %>
 <html>
 <head>
@@ -22,12 +21,14 @@
 		if (!document.newWrite.content.value) {
 			alert("내용을 입력하세요.");
 			return false;
-		}		
+		}
 	}
 </script>
-<body>
+<body
+	style="background-image: linear-gradient(to right, #e37682, #5f4d93);">
 	<jsp:include page="../menu.jsp" />
-	<div class="jumbotron">
+	<div class="jumbotron"
+		style="background-color: white; width: 1140px; margin: 0 auto; height: 60px; line-height: 60px; text-align: center; margin-bottom: 0; border-radius: 4px; margin-top: 15px; padding: 0px">
 		<div class="container">
 			<h1 class="display-3">게시판</h1>
 		</div>
@@ -40,14 +41,14 @@
 			<input name="id" type="hidden" class="form-control"
 				value="${sessionId}">
 			<div class="form-group row">
-				<label class="col-sm-2 control-label" >성명</label>
+				<label class="col-sm-2 control-label">성명</label>
 				<div class="col-sm-3">
-					<input name="name" type="text" class="form-control" value="<%=name %>"
-						placeholder="name">
+					<input name="name" type="text" class="form-control"
+						value="<%=name%>" placeholder="name">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2 control-label" >제목</label>
+				<label class="col-sm-2 control-label">제목</label>
 				<div class="col-sm-5">
 
 					<input name="subject" type="text" class="form-control"
@@ -55,16 +56,17 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2 control-label" >내용</label>
+				<label class="col-sm-2 control-label">내용</label>
 				<div class="col-sm-8">
 					<textarea name="content" cols="50" rows="5" class="form-control"
-						placeholder="content"></textarea>
+						placeholder="content"
+						style="resize: none; width: 100%; height: 450px;"></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-				 <input type="submit" class="btn btn-primary " value="등록 ">				
-					 <input type="reset" class="btn btn-primary " value="취소 ">
+					<input type="submit" class="btn btn-primary " value="등록 ">
+					<input type="reset" class="btn btn-primary " value="취소 ">
 				</div>
 			</div>
 		</form>
@@ -73,6 +75,3 @@
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
-
-
-

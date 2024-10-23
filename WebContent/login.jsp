@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 페이지</title>
+<title>관리자 로그인 페이지</title>
 <link rel="stylesheet" href="resources/css/login.css?after" type="text/css">
 </head>
 <body>
@@ -13,10 +13,10 @@
             로고부분
             <h1>시작</h1>
         </div>
-        <form class="login-box" action="processLoginMember.jsp" method="post">
-   			<input type="text" id="username" name="username" placeholder="사용자 이름" required>
+        <form class="login-box" action="j_security_check" method="post">
+   			<input type="text" id="ID" name="j_username" placeholder="사용자 이름" required>
     
-			<input type="password" id="password" name="password" placeholder="비밀번호" required>
+			<input type="password" id="password" name="j_password" placeholder="비밀번호" required>
 			
         	<%
 				String error = request.getParameter("error");

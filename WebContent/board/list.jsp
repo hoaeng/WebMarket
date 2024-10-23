@@ -3,16 +3,27 @@
 <%@ page import="java.util.*"%>
 <%@ page import="mvc.model.BoardDTO"%>
 <%
-	String sessionId = (String) session.getAttribute("sessionId");
-	List boardList = (List) request.getAttribute("boardlist");
-	int total_record = ((Integer) request.getAttribute("total_record")).intValue();
-	int pageNum = ((Integer) request.getAttribute("pageNum")).intValue();
-	int total_page = ((Integer) request.getAttribute("total_page")).intValue();
+String sessionId = (String) session.getAttribute("sessionId");
+List boardList = (List) request.getAttribute("boardlist");
+int total_record = ((Integer) request.getAttribute("total_record")).intValue();
+int pageNum = ((Integer) request.getAttribute("pageNum")).intValue();
+int total_page = ((Integer) request.getAttribute("total_page")).intValue();
+int board_type = ((Integer) request.getAttribute("board_Type")).intValue();
 %>
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
-<title>Board</title>
+<%
+if (board_type == 1) {
+%>
+<title>아이디어 게시판</title>
+<%
+} else if (board_type == 0) {
+%>
+<title>커뮤니티 게시판</title>
+<%
+}
+%>
 <script type="text/javascript">
 	function checkForm() {	
 		if (${sessionId==null}) {
@@ -24,19 +35,45 @@
 	}
 </script>
 </head>
-<body style="background-image: linear-gradient(to right, #e37682, #5f4d93);">
+<body>
 	<jsp:include page="../menu.jsp" />
-	<div class="jumbotron" style="background-color: white; width: 1140px; height: 60px; margin-left: 186px; margin-bottom: 0; border-radius: 4px; margin-top: 15px; padding: 0px">
+	<div class="jumbotron"
+		style="background-image: linear-gradient(to right, #e37682, #5f4d93);">
 		<div class="container">
-			<h1 class="display-3" style="color: #000; font-weight: bolder; font-size: 30px; line-height: 60px">아이디어 게시판</h1>
+			<%
+			if (board_type == 1) {
+			%>
+			<h1 class="display-3" style="color: white;">아이디어 게시판</h1>
+			<%
+			} else if (board_type == 0) {
+			%>
+			<h1 class="display-3" style="color: white;">커뮤니티 게시판</h1>
+			<%
+			}
+			%>
 		</div>
 	</div>
-	<div class="container" style="background-color: white; margin-top: 0; height: 100%; border-radius: 4px;">
+	<div class="container" style="background-color: white;">
 		<form action="<c:url value="./BoardListAction.do"/>" method="post">
-		<hr style="border: ">
+			<hr>
 			<div>
+				<div align="center" style="position: relative; top: 0px">
+					<table>
+						<tr>
+							<td width="100%" align="left">&nbsp;&nbsp; <select
+								name="items" class="txt">
+									<option value="subject">제목에서</option>
+									<option value="content">본문에서</option>
+									<option value="name">글쓴이에서</option>
+							</select> <input name="text" type="text" /> <input type="submit"
+								id="btnAdd" class="btn btn-primary " value="검색 " />
+							</td>
+						</tr>
+					</table>
+				</div>
 				<div class="text-right">
-					<span class="badge badge-success">전체 <%=total_record%>건	</span>
+					<span class="badge badge-success">전체 <%=total_record%>건
+					</span>
 				</div>
 			</div>
 			<div style="padding-top: 50px">
@@ -49,18 +86,21 @@
 						<th>글쓴이</th>
 					</tr>
 					<%
-						for (int j = 0; j < boardList.size(); j++) {
-							BoardDTO notice = (BoardDTO) boardList.get(j);
+					for (int j = 0; j < boardList.size(); j++) {
+						BoardDTO notice = (BoardDTO) boardList.get(j);
+						if(board_type == notice.getType()) {
 					%>
 					<tr>
 						<td><%=notice.getNum()%></td>
-						<td><a href="./BoardViewAction.do?num=<%=notice.getNum()%>&pageNum=<%=pageNum%>"><%=notice.getSubject()%></a></td>
+						<td><a
+							href="./BoardViewAction.do?num=<%=notice.getNum()%>&pageNum=<%=pageNum%>"><%=notice.getSubject()%></a></td>
 						<td><%=notice.getRegist_day()%></td>
 						<td><%=notice.getHit()%></td>
 						<td><%=notice.getName()%></td>
 					</tr>
 					<%
 						}
+					}
 					%>
 				</table>
 			</div>
@@ -83,15 +123,16 @@
 			<div align="left" style="position: relative; top: 450px">
 				<table>
 					<tr>
-						<td width="100%" align="left">&nbsp;&nbsp; 
-						<select name="items" class="txt">
+						<td width="100%" align="left">&nbsp;&nbsp; <select
+							name="items" class="txt">
 								<option value="subject">제목에서</option>
 								<option value="content">본문에서</option>
 								<option value="name">글쓴이에서</option>
-						</select> <input name="text" type="text" /> <input type="submit" id="btnAdd" class="btn btn-primary " value="검색 " />
+						</select> <input name="text" type="text" /> <input type="submit"
+							id="btnAdd" class="btn btn-primary " value="검색 " />
 						</td>
-						<td width="100%" align="right">
-							<a href="#" onclick="checkForm(); return false;" class="btn btn-primary">&laquo;글쓰기</a>
+						<td width="100%" align="right"><a href="#"
+							onclick="checkForm(); return false;" class="btn btn-primary">&laquo;글쓰기</a>
 						</td>
 					</tr>
 				</table>
@@ -99,11 +140,5 @@
 		</form>
 		<hr style="position: relative; top: 450px">
 	</div>
-	<jsp:include page="../footer.jsp" />
 </body>
 </html>
-
-
-
-
-

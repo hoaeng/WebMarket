@@ -15,13 +15,13 @@
 </head>
 <body>
 	<jsp:include page="../menu.jsp" />
-	<div class="jumbotron">
+	<div class="jumbotron" style="background-color: white; width: 1140px; height: 60px; text-align:center; margin-bottom: 0; border-radius: 4px; margin-top: 15px; padding: 0px">
 		<div class="container">
-			<h1 class="display-3">게시판</h1>
+			<h1 class="display-3" style="color: #000; font-weight: bolder; font-size: 30px; line-height: 60px">게시판</h1>
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container"  style="background-color: white; margin-top: 0; height: 100%; border-radius: 4px;">
 		<form name="newUpdate"
 			action="BoardUpdateAction.do?num=<%=notice.getNum()%>&pageNum=<%=nowpage%>"
 			class="form-horizontal" method="post">
@@ -60,5 +60,3 @@
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
-
-
