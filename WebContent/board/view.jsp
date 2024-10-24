@@ -4,9 +4,9 @@
 <%@ page import="mvc.model.BoardDTO"%>
 
 <%
-	BoardDTO notice = (BoardDTO) request.getAttribute("board");
-	int num = ((Integer) request.getAttribute("num")).intValue();
-	int nowpage = ((Integer) request.getAttribute("page")).intValue();
+BoardDTO notice = (BoardDTO) request.getAttribute("board");
+int num = ((Integer) request.getAttribute("num")).intValue();
+int nowpage = ((Integer) request.getAttribute("page")).intValue();
 %>
 <html>
 <head>
@@ -15,32 +15,37 @@
 </head>
 <body>
 	<jsp:include page="../menu.jsp" />
-	<div class="jumbotron" style="background-color: white; width: 1140px; height: 60px; text-align:center; margin-bottom: 0; border-radius: 4px; margin-top: 15px; padding: 0px">
+	<div class="jumbotron"
+		style="background-color: white; width: 1140px; height: 60px; text-align: center; margin-bottom: 0; border-radius: 4px; margin-top: 15px; padding: 0px">
 		<div class="container">
-			<h1 class="display-3" style="color: #000; font-weight: bolder; font-size: 30px; line-height: 60px">게시판</h1>
+			<h1 class="display-3"
+				style="color: #000; font-weight: bolder; font-size: 30px; line-height: 60px">게시판</h1>
 		</div>
 	</div>
 
-	<div class="container"  style="background-color: white; margin-top: 0; height: 100%; border-radius: 4px;">
+	<div class="container"
+		style="background-color: white; margin-top: 0; height: 100%; border-radius: 4px;">
 		<form name="newUpdate"
 			action="BoardUpdateAction.do?num=<%=notice.getNum()%>&pageNum=<%=nowpage%>"
 			class="form-horizontal" method="post">
 			<div class="form-group row">
-				<label class="col-sm-2 control-label" >성명</label>
+				<label class="col-sm-2 control-label">성명</label> 
 				<div class="col-sm-3">
-					<input name="name" class="form-control"	value=" <%=notice.getName()%>">
+					<%=notice.getName()%> <!--  글쓴이로 바꿔야 됨 -->
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2 control-label" >제목</label>
+				<label class="col-sm-2 control-label">제목</label>
 				<div class="col-sm-5">
-					<input name="subject" class="form-control"	value=" <%=notice.getSubject()%>" >
+					<%=notice.getSubject()%> <!-- 제목 -->
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2 control-label" >내용</label>
+				<label class="col-sm-2 control-label">내용</label>
 				<div class="col-sm-8" style="word-break: break-all;">
-					<textarea name="content" class="form-control" cols="50" rows="5"> <%=notice.getContent()%></textarea>
+					<div>
+						<%=notice.getContent()%> <!-- 글 내용 -->
+					</div>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -48,10 +53,13 @@
 					<c:set var="userId" value="<%=notice.getId()%>" />
 					<c:if test="${sessionId==userId}">
 						<p>
-							<a	href="./BoardDeleteAction.do?num=<%=notice.getNum()%>&pageNum=<%=nowpage%>"	class="btn btn-danger"> 삭제</a> 
-							<input type="submit" class="btn btn-success" value="수정 ">
+							<a
+								href="./BoardDeleteAction.do?num=<%=notice.getNum()%>&pageNum=<%=nowpage%>"
+								class="btn btn-danger"> 삭제</a> <input type="submit"
+								class="btn btn-success" value="수정 ">
 					</c:if>
-					<a href="./BoardListAction.do?pageNum=<%=nowpage%>"		class="btn btn-primary"> 목록</a>
+					<a href="./BoardListAction.do?pageNum=<%=nowpage%>"
+						class="btn btn-primary"> 목록</a>
 				</div>
 			</div>
 		</form>

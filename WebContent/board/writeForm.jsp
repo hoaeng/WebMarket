@@ -29,13 +29,13 @@ int board_type = Integer.parseInt(request.getParameter("board_type"));
 	style="background-image: linear-gradient(to right, #e37682, #5f4d93);">
 	<jsp:include page="../menu.jsp" />
 	<div class="jumbotron"
-		style="background-color: white; width: 1140px; margin: 0 auto; height: 60px; line-height: 60px; text-align: center; margin-bottom: 0; border-radius: 4px; margin-top: 15px; padding: 0px">
+		style="background-color: white; width: 1140px; margin: 0 auto; height: 60px; line-height: 60px; text-align: center; margin-bottom: 0; border-top-left-radius: 4px; border-top-right-radius:4px; margin-top: 15px; padding: 0px">
 		<div class="container">
 			<h1 class="display-3">게시판</h1>
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container" style="background-color: white; padding-top: 120px;">
 
 		<form name="newWrite" action="./BoardWriteAction.do"
 			class="form-horizontal" method="post" onsubmit="return checkForm()">
@@ -45,29 +45,21 @@ int board_type = Integer.parseInt(request.getParameter("board_type"));
 					<%
 					if (board_type == 1) {
 					%>
-					<input name="board_type" type="radio" value="1" checked />
-					아이디어 게시판 <input name="board_type" type="radio" value="0" />
+					<input name="board_type" type="radio" value="1" checked style="margin-left: 53px; margin-right: 53px;"/><input name="board_type" type="radio" value="0" style="margin-left: 53px; margin-right: 53px;"/> <br>
+					아이디어 게시판 
 					커뮤니티 게시판
 					<%
 					} else if (board_type == 0) {
 					%>
-					<input name="board_type" type="radio" value="0" checked />
-					커뮤니티 게시판 <input name="board_type" type="radio" value="1" />
+					<input name="board_type" type="radio" value="0" checked style="margin-left: 53px; margin-right: 53px;"/><input name="board_type" type="radio" value="1" style="margin-left: 53px; margin-right: 53px;"/> <br>
+					커뮤니티 게시판 
 					아이디어 게시판
 					<%
 					}
 					%>
 				</div>
 			</div>
-			<input name="id" type="hidden" class="form-control"
-				value="${sessionId}">
-			<div class="form-group row">
-				<label class="col-sm-2 control-label">성명</label>
-				<div class="col-sm-3">
-					<input name="name" type="text" class="form-control"
-						value="<%=name%>" placeholder="name">
-				</div>
-			</div>
+			<br>
 			<div class="form-group row">
 				<label class="col-sm-2 control-label">제목</label>
 				<div class="col-sm-5">

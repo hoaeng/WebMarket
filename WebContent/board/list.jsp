@@ -87,7 +87,6 @@ if (board_type == 1) {
 			<div style="padding-top: 50px">
 				<table class="table table-hover">
 					<tr>
-						<th>번호</th>
 						<th>제목</th>
 						<th>작성일</th>
 						<th>조회</th>
@@ -98,8 +97,7 @@ if (board_type == 1) {
 						BoardDTO notice = (BoardDTO) boardList.get(j);
 						if (board_type == notice.getType() || board_type == 2) {
 					%>
-					<tr>
-						<td><%=notice.getNum()%></td>
+					<tr>	
 						<td><a
 							href="./BoardViewAction.do?num=<%=notice.getNum()%>&pageNum=<%=pageNum%>"><%=notice.getSubject()%></a></td>
 						<td><%=notice.getRegist_day()%></td>
