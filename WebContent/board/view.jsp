@@ -31,7 +31,7 @@ int nowpage = ((Integer) request.getAttribute("page")).intValue();
 			<div class="form-group row">
 				<label class="col-sm-2 control-label">성명</label> 
 				<div class="col-sm-3">
-					<%=notice.getName()%> <!--  글쓴이로 바꿔야 됨 -->
+					<%=notice.getName()%> <!--  글쓴이로 바꿔야  됨 -->
 				</div>
 			</div>
 			<div class="form-group row">
