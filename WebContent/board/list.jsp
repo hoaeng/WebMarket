@@ -22,6 +22,10 @@ if (board_type == 1) {
 %>
 <title>커뮤니티 게시판</title>
 <%
+} else if (board_type == 2) {
+%>
+<title>랭킹 게시판</title>
+<%
 }
 %>
 <script type="text/javascript">
@@ -48,6 +52,10 @@ if (board_type == 1) {
 			} else if (board_type == 0) {
 			%>
 			<h1 class="display-3" style="color: white;">커뮤니티 게시판</h1>
+			<%
+			} else if (board_type == 2) {
+			%>
+			<h1 class="display-3" style="color: white;">랭킹 게시판</h1>
 			<%
 			}
 			%>
@@ -88,7 +96,7 @@ if (board_type == 1) {
 					<%
 					for (int j = 0; j < boardList.size(); j++) {
 						BoardDTO notice = (BoardDTO) boardList.get(j);
-						if(board_type == notice.getType()) {
+						if (board_type == notice.getType() || board_type == 2) {
 					%>
 					<tr>
 						<td><%=notice.getNum()%></td>
@@ -99,15 +107,16 @@ if (board_type == 1) {
 						<td><%=notice.getName()%></td>
 					</tr>
 					<%
-						}
+					}
 					}
 					%>
 				</table>
 			</div>
 			<div align="center" style="position: relative; top: 450px">
 				<c:set var="pageNum" value="<%=pageNum%>" />
+				<c:set var="board_type" value="<%=board_type%>" />
 				<c:forEach var="i" begin="1" end="<%=total_page%>">
-					<a href="<c:url value="./BoardListAction.do?pageNum=${i}" /> ">
+					<a href="<c:url value="./BoardListAction.do?pageNum=${i}&board_type=${board_type}" /> ">
 						<c:choose>
 							<c:when test="${pageNum==i}">
 								<font color='4C5317'><b> [${i}]</b></font>
@@ -131,9 +140,9 @@ if (board_type == 1) {
 						</select> <input name="text" type="text" /> <input type="submit"
 							id="btnAdd" class="btn btn-primary " value="검색 " />
 						</td>
-						<td width="100%" align="right"><a href="#"
-							onclick="checkForm(); return false;" class="btn btn-primary">&laquo;글쓰기</a>
-						</td>
+						<td width="100%" align="right"><a
+							href="./BoardWriteForm.do?id=<%=sessionId%>&board_type=<%=board_type%>"
+							class="btn btn-primary">&laquo;글쓰기</a></td>
 					</tr>
 				</table>
 			</div>

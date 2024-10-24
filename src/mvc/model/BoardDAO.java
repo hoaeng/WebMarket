@@ -21,7 +21,7 @@ public class BoardDAO {
 		return instance;
 	}	
 	//board �뀒�씠釉붿쓽 �젅肄붾뱶 媛쒖닔
-	public int getListCount(String items, String text) {
+	public int getListCount(String items, String text, int board_type) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -29,12 +29,15 @@ public class BoardDAO {
 		int x = 0;
 
 		String sql;
-		
-		if (items == null && text == null)
+
+		if (board_type == 0 || board_type == 1)
+			sql = "SELECT   count(*) FROM board where board_type = " + board_type;
+		else if (board_type == 2)
+			sql = "SELECT count(*) FROM board order by hit desc";
+		else if (items == null && text == null)
 			sql = "select  count(*) from board";
 		else
 			sql = "SELECT   count(*) FROM board where " + items + " like '%" + text + "%'";
-		
 		try {
 			conn = DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -65,13 +68,16 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		int total_record = getListCount(items, text );
+		int total_record = getListCount(items, text, board_type);
 		int start = (page - 1) * limit;
 		int index = start + 1;
 
 		String sql;
-
-		if (items == null && text == null)
+		if (board_type == 0 || board_type == 1)
+			sql = "SELECT   * FROM board where board_type = " + board_type;
+		else if (board_type == 2)
+			sql = "SELECT * FROM board order by hit desc";
+		else if (items == null && text == null)
 			sql = "select * from board ORDER BY num DESC";
 		else
 			sql = "SELECT  * FROM board where " + items + " like '%" + text + "%' ORDER BY num DESC ";
@@ -259,7 +265,7 @@ public class BoardDAO {
 				board.setIp(rs.getString("ip"));
 				board.setType(rs.getInt("board_type"));
 			}
-			
+
 			return board;
 		} catch (Exception ex) {
 			System.out.println("getBoardByNum() �뿉�윭 : " + ex);

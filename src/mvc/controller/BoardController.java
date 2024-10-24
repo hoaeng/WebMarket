@@ -75,7 +75,7 @@ public class BoardController extends HttpServlet {
 		String items = request.getParameter("items");
 		String text = request.getParameter("text");
 		
-		int total_record=dao.getListCount(items, text);
+		int total_record=dao.getListCount(items, text, board_Type);
 		boardlist = dao.getBoardList(pageNum, limit, items, text, board_Type); 
 		
 		int total_page;
@@ -111,16 +111,19 @@ public class BoardController extends HttpServlet {
 	public void requestBoardWrite(HttpServletRequest request){
 					
 		BoardDAO dao = BoardDAO.getInstance();		
+		int board_Type = Integer.parseInt(request.getParameter("board_type"));
 		
 		BoardDTO board = new BoardDTO();
 		board.setId(request.getParameter("id"));
 		board.setName(request.getParameter("name"));
 		board.setSubject(request.getParameter("subject"));
 		board.setContent(request.getParameter("content"));	
+		board.setType(Integer.parseInt(request.getParameter("board_type")));
 		
 		System.out.println(request.getParameter("name"));
 		System.out.println(request.getParameter("subject"));
 		System.out.println(request.getParameter("content"));
+		System.out.println(Integer.parseInt(request.getParameter("board_type")));
 		java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy/MM/dd(HH:mm:ss)");
 		String regist_day = formatter.format(new java.util.Date()); 
 		
@@ -128,7 +131,8 @@ public class BoardController extends HttpServlet {
 		board.setRegist_day(regist_day);
 		board.setIp(request.getRemoteAddr());			
 		
-		dao.insertBoard(board);								
+		dao.insertBoard(board);						
+		request.setAttribute("board_Type", board_Type);
 	}
 	//�꽑�깮�맂 湲� �긽�꽭 �럹�씠吏� 媛��졇�삤湲�
 	public void requestBoardView(HttpServletRequest request){

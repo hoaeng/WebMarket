@@ -52,7 +52,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 					</c:otherwise>
 				</c:choose>
 				<li><a href="#first">아이디어 목록</a></li>
-				<li><a href="#second">커뮤니티</a></li>
+				<li><a href="#second">MY아이디어</a></li>
 				<li><a href="#cta">프리미엄</a></li>
 				
 				<c:choose>
@@ -109,7 +109,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 					<li><span class="material-symbols-outlined"
 						style="font-size: 150px;">social_leaderboard</span>
 						<h3>랭킹</h3>
-						<p>주간, 월간 등 기간 인기 아이디어 목록을 확인할 수 있습니다</p> <a href="generic.html"
+						<p>주간, 월간 등 기간 인기 아이디어 목록을 확인할 수 있습니다</p> <a href="./BoardListAction.do?pageNum=1&board_type=2"
 						class="button">랭킹</a></li>
 					<li><span class="material-symbols-outlined"
 						style="font-size: 150px;">lightbulb_circle</span>

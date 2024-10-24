@@ -2,11 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String name = (String) request.getAttribute("name");
+int board_type = Integer.parseInt(request.getParameter("board_type"));
 %>
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
-<title>Board</title>
+<title>글쓰기</title>
 </head>
 <script type="text/javascript">
 	function checkForm() {
@@ -38,6 +39,26 @@ String name = (String) request.getAttribute("name");
 
 		<form name="newWrite" action="./BoardWriteAction.do"
 			class="form-horizontal" method="post" onsubmit="return checkForm()">
+			<div class="form-group  row">
+				<label class="col-sm-2">업로드 게시판</label>
+				<div class="col-sm-10">
+					<%
+					if (board_type == 1) {
+					%>
+					<input name="board_type" type="radio" value="1" checked />
+					아이디어 게시판 <input name="board_type" type="radio" value="0" />
+					커뮤니티 게시판
+					<%
+					} else if (board_type == 0) {
+					%>
+					<input name="board_type" type="radio" value="0" checked />
+					커뮤니티 게시판 <input name="board_type" type="radio" value="1" />
+					아이디어 게시판
+					<%
+					}
+					%>
+				</div>
+			</div>
 			<input name="id" type="hidden" class="form-control"
 				value="${sessionId}">
 			<div class="form-group row">
