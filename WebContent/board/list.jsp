@@ -31,11 +31,11 @@ if (board_type == 1) {
 <script type="text/javascript">
 	function checkForm() {	
 		if (${sessionId==null}) {
-			alert("로그인 해주세요.");
+			alert("로그인한 후 사용하실 수 있는 기능입니다.");
 			return false;
 		}
 
-		location.href = "./BoardWriteForm.do?id=<%=sessionId%>"
+		location.href = "./BoardWriteForm.do?id=<%=sessionId%>&board_type=<%=board_type%>"
 	}
 </script>
 </head>
@@ -139,8 +139,7 @@ if (board_type == 1) {
 							id="btnAdd" class="btn btn-primary " value="검색 " />
 						</td>
 						<td width="100%" align="right"><a
-							href="./BoardWriteForm.do?id=<%=sessionId%>&board_type=<%=board_type%>"
-							class="btn btn-primary">&laquo;글쓰기</a></td>
+							href="#" onclick="checkForm(); return false;" class="btn btn-primary">&laquo;글쓰기</a></td>
 					</tr>
 				</table>
 			</div>

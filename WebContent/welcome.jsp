@@ -137,15 +137,15 @@ String sessionId = (String) session.getAttribute("sessionId");
             </header>
             <ul class="statistics">
                <li class="style1"><span class="icon solid fa-code-branch"></span>
-                  <strong>5,120</strong> Etiam</li>
+                  <strong>5,120</strong> 커뮤니티</li>
                <li class="style2"><span class="icon fa-folder-open"></span> <strong>8,192</strong>
-                  Magna</li>
+                  글</li>
                <li class="style3"><span class="icon solid fa-signal"></span>
-                  <strong>2,048</strong> Tempus</li>
+                  <strong>2,048</strong> 네트워크</li>
                <li class="style4"><span class="icon solid fa-laptop"></span>
-                  <strong>4,096</strong> Aliquam</li>
+                  <strong>4,096</strong> 유저</li>
                <li class="style5"><span class="icon fa-gem"></span> <strong>1,024</strong>
-                  Nullam</li>
+                  프리미엄</li>
             </ul>
             <footer class="major">
                <ul class="actions special">
@@ -165,9 +165,10 @@ String sessionId = (String) session.getAttribute("sessionId");
 				</header>
 				<footer class="major">
 					<ul class="actions special">
-						<li><a href="generic.html" class="button primary">Get
-								Started</a></li>
+						<li><a href="generic.html" class="button primary">추후 열릴 예정</a></li>
+						<!-- 
 						<li><a href="generic.html" class="button">Learn More</a></li>
+						 -->
 					</ul>
 				</footer>
 			</section>
@@ -176,27 +177,22 @@ String sessionId = (String) session.getAttribute("sessionId");
 		<!-- Footer -->
 		<footer id="footer">
 			<section>
-				<h2>Aliquam sed mauris</h2>
-				<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat
-					consequat magna adipiscing tempus etiam dolore veroeros. eget
-					dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula
-					erat egestas velit, vitae tincidunt odio.</p>
-				<ul class="actions">
-					<li><a href="generic.html" class="button">Learn More</a></li>
-				</ul>
+				<h2>삼일공업고등학교</h2>
+				<p>본 사이트의 저작권은 삼일공업고등학교에 있음을 알려드립니다.</p>
 			</section>
 			<section>
-				<h2>Etiam feugiat</h2>
+				<h2>연락처</h2>
 				<dl class="alt">
 					<dt>Address</dt>
-					<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+					<dd>경기도 수원시 수원천로392번길 44-60</dd>
 					<dt>Phone</dt>
-					<dd>(000) 000-0000 x 0000</dd>
-					<dt>Email</dt>
+					<dd>031-257-3131</dd>
+					<dt>학교 사이트</dt>
 					<dd>
-						<a href="#">information@untitled.tld</a>
+						<a href="#">sths-h.goesw.kr/index.do</a>
 					</dd>
 				</dl>
+				<!--
 				<ul class="icons">
 					<li><a href="#" class="icon brands fa-twitter alt"><span
 							class="label">Twitter</span></a></li>
@@ -209,6 +205,7 @@ String sessionId = (String) session.getAttribute("sessionId");
 					<li><a href="#" class="icon brands fa-dribbble alt"><span
 							class="label">Dribbble</span></a></li>
 				</ul>
+				  -->
 			</section>
 			<p class="copyright">
 				&copy; INSPIRE</a>
